@@ -1,0 +1,13 @@
+.jumbotron {
+background: #E0EEEE;
+color: black;
+border-radius: 0px;
+}
+
+body{
+  background: #E0EEEE;
+}
+
+.btn.btn-custom {
+	margin-right: 10px;
+}
