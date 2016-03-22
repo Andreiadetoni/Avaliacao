@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Avaliação</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+	<script type="text/javascript" src="js/controller/formCtrl.js"></script>
+</head>
+<body ng-controller="FormCtrl">
+	<div class="container">
+		<div class="jumbotron">
+			<h1 ng-bind= "'Cadatro de Contatos'" ng-show="!clicouEditar"></h1>
+			<h1 ng-bind= "'Editar'" ng-show="clicouEditar"></h1>
+			<div class="row">
+		        <div class="col-md-12">
+					<form background:>
+						<div class="row">
+							<div class="col-md-4" ng-show="!clicouEditar">
+							<!-- Campos para o cadastro -->
+								<div class="form-group">
+									<label for="name">Nome</label>
+									<input type="text" class="form-control" id="name" ng-model="name"> </input>
+								</div>
+
+								<div class="form-group">
+									<label for="email">E-mail</label>
+									<input type="email" class="form-control" id="email" ng-model="email"> </input>
+								</div>
+
+								<div class="form-group">
+									<label for="phone">Telefone</label>
+									<input type="phone" class="form-control" id="phone" ng-model="phone"> </input>
+								</div>
+							
+							
+								<div>
+									<button class="btn btn-primary pull-right" ng-click="cadastraContato(name, email, phone)">Incluir</button>
+								</div>
+
+							</div>
+
+							<!-- Campos para edição -->
+							<div class="col-md-4" ng-show="clicouEditar">
+								<div class="form-group">
+									<label for="name">Nome</label>
+									<input type="text" class="form-control" id="name" ng-model="renomearn"> </input>
+								</div>
+
+								<div class="form-group">
+									<label for="email">E-mail</label>
+									<input type="email" class="form-control" id="email" ng-model="renomeare"> </input>
+								</div>
+
+								<div class="form-group">
+									<label for="phone">Telefone</label>
+									<input type="phone" class="form-control" id="phone" ng-model="renomearp"> </input>
+								</div>
+							
+								<div>
+									<button class="btn btn-danger pull-right" ng-click="cancelarEdicao()">Cancelar</button>
+									<button class="btn btn-custom btn-primary pull-right"   ng-click="renomearContato(renomearn, renomeare, renomearp)">Salvar</button>
+								</div>
+
+							</div>
+						
+						
+							<!-- Lista com informações incluidas -->
+							<div class="col-md-8" ng-hide="list.length">
+								<h3 class="text-center">Nenhum contato cadastrado!</h3>
+							</div>
+							<div class="col-md-8" ng-show="list.length">
+								<table class="table">
+									<thead>
+									<tr>
+										<th>Nome</th>
+										<th>E-mail</th>
+										<th>Telefone</th>
+										<th>Opções</th>
+									</tr>
+									
+									</thead>
+
+									<body>
+										<tr ng-repeat="item in list">
+											<td ng-bind= "item.nomePessoa"></td>
+											<td ng-bind= "item.emailPessoa"></td>
+											<td ng-bind= "item.phonePessoa"></td>
+											<td>
+												<button class="btn btn-success" ng-click="editaContato($index)">
+													<i class="glyphicon glyphicon-pencil"></i>
+												</button>
+												<button class="btn btn-danger"  ng-click="removeContato($index)">
+													<i class="glyphicon glyphicon-trash"></i>
+												</button>
+												
+											</td>
+										</tr>
+
+									</body>
+
+								</table>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
+
+
